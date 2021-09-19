@@ -88,10 +88,6 @@ class CameraScreen(MDScreen):
         self.layout=MDBoxLayout(orientation="vertical")
         self.image=Image()
         self.layout.add_widget(self.image)
-        self.layout.add_widget(MDRaisedButton(
-            text="CLICK HERE",
-            pos_hint={'center_x':.5,'center_y':.5},
-            size_hint=(None,None)))
         self.add_widget(self.layout)
 
         self.vid=cv2.VideoCapture(0)
@@ -110,7 +106,7 @@ class ContentNavigationDrawer(MDBoxLayout):
     nav_drawer = ObjectProperty()
     
 
-class camera_obj_detect(MDApp):
+class main(MDApp):
     pass
 
-camera_obj_detect().run()
+main().run()
