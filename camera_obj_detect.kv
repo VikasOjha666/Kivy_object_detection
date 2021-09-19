@@ -1,0 +1,59 @@
+<ContentNavigationDrawer>:
+
+    ScrollView:
+
+        MDList:
+
+            OneLineListItem:
+                text: "Home"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "Home"
+
+            OneLineListItem:
+                text: "About"
+                on_press:
+                    root.nav_drawer.set_state("close")
+                    root.screen_manager.current = "About"
+
+
+MDScreen:
+
+    MDToolbar:
+        id: toolbar
+        pos_hint: {"top": 1}
+        elevation: 10
+        title: "Object Detection APP"
+        left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+
+    MDNavigationLayout:
+        x: toolbar.height
+
+        ScreenManager:
+            id: screen_manager
+
+            CameraScreen:
+                name: "Home"
+                MDToolbar:
+                    id: toolbar
+                    pos_hint: {"top": 1}
+                    elevation: 10
+                    title: "Object Detection APP"
+                    left_action_items: [["menu", lambda x: nav_drawer.set_state("open")]]
+            
+            MDScreen:
+                name: "About"
+
+                MDLabel:
+                    text: "This app was created to show how we can use deep learning models on mobile devices with kivy."
+                    
+                    halign: "center"
+
+            
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+            ContentNavigationDrawer:
+                screen_manager: screen_manager
+                nav_drawer: nav_drawer
